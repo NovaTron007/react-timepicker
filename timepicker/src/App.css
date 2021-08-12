@@ -1,0 +1,113 @@
+.container {
+  max-width: 1100px;
+  padding:20px;
+  margin: 0 auto;
+}
+
+
+.timePickerContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height:calc(1.5em + .75rem + 2px);
+  border-radius: 50px;
+  box-shadow: inset 2px 1000px 1px #fff, 2px 4px 4px rgb(0 0 0 / 10%);
+  border: 1px solid transparent;
+  background-image: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(101deg,#37313c,#37313c); /* outline */
+}
+
+.timePickerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.timePickerSelectInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin:0 20px;
+  width: 100%;
+}
+
+.timePickerPlaceholderText {
+  font-size: 16px;
+  color: #9a9a9a;
+}
+
+.timePickerMenu {
+  height: 67px;
+  width:100%;
+  top:50px;
+  position: absolute;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timePickerRow {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.timePickerCol {
+  display: flex;
+  padding: 10px 20px 14px;
+  flex-direction: column;
+}
+
+.timePickerSelectLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #9a9a9a;
+  text-align: center;
+}
+
+.hoursInput {
+  border: 1px solid orange;
+  border-radius: 3px;
+  padding:10px 20px;
+}
+
+.minsInput {
+  border: 1px solid orange;
+  border-radius: 3px;
+  padding:10px 20px;
+}
+
+.dataSelect {
+  position:relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 3px;
+  padding:5px;
+  height: 24px;
+  min-width: 53px;
+  min-height: 27px;
+}
+.dataSelect > * {
+  display: flex;
+}
+.dataInputDropdown {
+  position: absolute;
+  height: 143px;
+  overflow-y: scroll;
+  border-radius: 6px;
+  top: 75px;
+  width: 53px;
+  background-color: #fff;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
+
+.dataInputDropdownItem{
+  display: block;
+}
+
+.border-orange {
+  border: 2px solid orange;
+}
+
