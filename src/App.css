@@ -1,11 +1,11 @@
 .container {
-  max-width: 1100px;
+  width: 600px;
   padding:20px;
   margin: 0 auto;
 }
 
 
-.timePickerContainer {
+.timePickerSelectContainer {
   display: flex;
   align-items: center;
   position: relative;
@@ -14,14 +14,17 @@
   box-shadow: inset 2px 1000px 1px #fff, 2px 4px 4px rgb(0 0 0 / 10%);
   border: 1px solid transparent;
   background-image: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(101deg,#37313c,#37313c); /* outline */
+  cursor:pointer;
 }
 
-.timePickerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
+.isActiveSelectContainer {
+  border: 2px solid transparent;
+  background-image: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(101deg,#ffd465,#ffb800);
+  background-origin: border-box;
+  background-clip: content-box,border-box;
+  box-shadow: inset 2px 1000px 1px #fff, 2px 4px 4px rgb(0 0 0 / 10%);
 }
+
 
 .timePickerSelectInput {
   display: flex;
@@ -87,6 +90,7 @@
   height: 24px;
   min-width: 53px;
   min-height: 27px;
+  cursor:pointer;
 }
 .dataSelect > * {
   display: flex;
@@ -97,17 +101,36 @@
   overflow-y: scroll;
   border-radius: 6px;
   top: 75px;
-  width: 53px;
+  width: 65px;
   background-color: #fff;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  box-shadow: 2px 4px 4px rgb(0 0 0 / 10%);
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .dataInputDropdownItem{
   display: block;
+  cursor: pointer;
 }
 
-.border-orange {
-  border: 2px solid orange;
+.dataInputValue{
+  text-align: center;
+}
+
+.dataInputDropdownItem:hover{
+  background-color: #FFF1C1;
+}
+
+.dataInputDropdown::-webkit-scrollbar-thumb {
+  border-radius: 20px !important;
+  background: #9A9A9A80;
+}
+/* width */
+.dataInputDropdown::-webkit-scrollbar {
+  width: 4px;
+}
+/* Track */
+.dataInputDropdown::-webkit-scrollbar-track {
+  background: transparent;
 }
 

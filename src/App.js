@@ -4,7 +4,9 @@ import TimePicker from './components/timepicker';
 function App() {
   return (
     <div className="App">
-      <TimePicker />
+      <div className="container">
+        <TimePicker />
+      </div>
     </div>
   );
 }
