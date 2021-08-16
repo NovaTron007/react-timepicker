@@ -1,5 +1,5 @@
 import './App.css';
-import TimePicker from './components/timepicker';
+import TimePicker from './components/TimePicker';
 
 function App() {
   return (

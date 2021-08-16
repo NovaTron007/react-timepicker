@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-
+/* main select container */
 .timePickerSelectContainer {
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@
   cursor:pointer;
 }
 
-.isActiveSelectContainer {
+.timePickerisActiveSelectContainer {
   border: 2px solid transparent;
   background-image: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(101deg,#ffd465,#ffb800);
   background-origin: border-box;
@@ -25,62 +25,44 @@
   box-shadow: inset 2px 1000px 1px #fff, 2px 4px 4px rgb(0 0 0 / 10%);
 }
 
-
-.timePickerSelectInput {
+/* hours and minutes menu */
+.timePickerMenu {
+  height: 67px;
+  width:100%;
+  top:50px;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.timePickerRow {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.timePickerCol {
+  display: flex;
+  flex-direction: column;
+}
+.timePickerSelect {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin:0 20px;
   width: 100%;
 }
-
 .timePickerPlaceholderText {
   font-size: 16px;
   color: #9a9a9a;
 }
-
-.timePickerMenu {
-  height: 67px;
-  width:100%;
-  top:50px;
-  position: absolute;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
-}
-
-.timePickerRow {
-  display:flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.timePickerCol {
-  display: flex;
-  padding: 10px 20px 14px;
-  flex-direction: column;
-}
-
-.timePickerSelectLabel {
+.timePickerLabel {
   font-size: 13px;
   font-weight: 700;
   color: #9a9a9a;
   text-align: center;
 }
 
-.hoursInput {
-  border: 1px solid orange;
-  border-radius: 3px;
-  padding:10px 20px;
-}
-
-.minsInput {
-  border: 1px solid orange;
-  border-radius: 3px;
-  padding:10px 20px;
-}
-
-.dataSelect {
+/* hours and minutes select */
+.timePickerHoursMinutesSelect {
   position:relative;
   display: flex;
   justify-content: space-between;
@@ -91,11 +73,24 @@
   min-width: 53px;
   min-height: 27px;
   cursor:pointer;
+  border: 1px solid #F3F3F3;
 }
-.dataSelect > * {
+.timePickerHoursMinutesSelectValue{
+  text-align: center;
+}
+.timePickerHoursMinsSelect > * {
   display: flex;
 }
-.dataInputDropdown {
+.timePickerisActiveSelect {
+  border: 2px solid transparent;
+  background-image: linear-gradient(hsla(0,0%,100%,0),hsla(0,0%,100%,0)),linear-gradient(101deg,#ffd465,#ffb800);
+  background-origin: border-box;
+  background-clip: content-box,border-box;
+  box-shadow: inset 2px 1000px 1px #fff, 2px 4px 4px rgb(0 0 0 / 10%);
+}
+
+/*hours and minutes option menu */
+.timePickerOptionMenu {
   position: absolute;
   height: 143px;
   overflow-y: scroll;
@@ -107,30 +102,23 @@
   padding: 10px;
   box-sizing: border-box;
 }
-
-.dataInputDropdownItem{
+.timePickerOptionMenuItem{
   display: block;
   cursor: pointer;
 }
-
-.dataInputValue{
-  text-align: center;
-}
-
-.dataInputDropdownItem:hover{
+.timePickerOptionMenuItem:hover{
   background-color: #FFF1C1;
 }
-
-.dataInputDropdown::-webkit-scrollbar-thumb {
-  border-radius: 20px !important;
+.timePickerOptionMenu::-webkit-scrollbar-thumb {
+  border-radius: 20px;
   background: #9A9A9A80;
 }
-/* width */
-.dataInputDropdown::-webkit-scrollbar {
+/* scroll width */
+.timePickerOptionMenu::-webkit-scrollbar {
   width: 4px;
 }
-/* Track */
-.dataInputDropdown::-webkit-scrollbar-track {
+/* scroll Track */
+.timePickerOptionMenu::-webkit-scrollbar-track {
   background: transparent;
 }
 
