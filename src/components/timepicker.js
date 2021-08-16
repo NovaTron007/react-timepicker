@@ -39,6 +39,7 @@ const TimePicker = () => {
                 // close hours options menu
                 setShowHoursMenu(!showHoursMenu)
                 if(item < 10) {
+                    // minutes < 10 prepend 0 ie: "00"
                     let tempHours = `0${item}`
                     setHoursValue(tempHours)
                 } else {
@@ -54,6 +55,7 @@ const TimePicker = () => {
             case "minutes":
                 setShowMinutesMenu(!showMinutesMenu)
                 if(item < 10) {
+                    // minutes < 10 prepend 0 ie: "00"
                     let tempMinutes = `0${item}`
                     setMinutesValue(tempMinutes)
                 } else {
