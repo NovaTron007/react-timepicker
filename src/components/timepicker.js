@@ -13,20 +13,58 @@ const TimePicker = () => {
     // get values
     const [hoursValue,  setHoursValue] = useState()
     const [minutesValue, setMinutesValue] = useState()
+    const [timeValue, setTimeValue] = useState()
     // timeMenu ref
     const timeMenuRef = useRef()
     
     // show, hide hours and minutes menus
     const handleDropdown = (type) => {
-
         if(type === "hour"){
-            console.log("hour")
             setShowHoursMenu(!showHoursMenu)
+            // close option menu
             setShowMinutesMenu(false)
         }
         if(type === "min") {
             setShowHoursMenu(false)
+            // close option menu
             setShowMinutesMenu(!showMinutesMenu)
+        }
+    }
+
+    // handle hours and minutes select 
+    const handleHoursMinutesSelect = (type, item) => {
+        switch (type) {
+            // set hours
+            case "hours":
+                // close hours options menu
+                setShowHoursMenu(!showHoursMenu)
+                if(item < 10) {
+                    let tempHours = `0${item}`
+                    setHoursValue(tempHours)
+                } else {
+                    setHoursValue(item)
+                }
+                // if minutes empty set default val
+                if(minutesValue === undefined) {
+                    setMinutesValue("00")
+                }
+                break;
+           
+            // set minutes
+            case "minutes":
+                setShowMinutesMenu(!showMinutesMenu)
+                if(item < 10) {
+                    let tempMinutes = `0${item}`
+                    setMinutesValue(tempMinutes)
+                } else {
+                    setMinutesValue(item)
+                }
+                if(hoursValue === undefined) {
+                    setHoursValue("00")
+                }
+                break
+            default:
+                break;
         }
     }
 
@@ -40,6 +78,8 @@ const TimePicker = () => {
         setShowTimeMenu(false)
     }
 
+
+
     // Timepicker Menu Component
     const TimePickerMenu = () => {
 
@@ -52,7 +92,8 @@ const TimePicker = () => {
                             <div className="timePickerHoursMinutesSelectValue">
                                 { hoursValue === undefined ? "--" 
                                 : 
-                                    hoursValue < 10 ? `0${hoursValue}` : hoursValue 
+                                    // prepend with 0 for display purpose "00" if less than 10
+                                    hoursValue
                                 }
                             </div>
                             <div className="timePickerChevron"><img src={`${showHoursMenu ? "../icons/chevron-up.svg" : "../icons/chevron-down.svg"}`} alt="" /></div>
@@ -65,9 +106,10 @@ const TimePicker = () => {
                                     <span 
                                         className="timePickerOptionMenuItem" 
                                         key={item} 
-                                        value={item} 
-                                        onClick={() => {setHoursValue(item); setShowHoursMenu(!showHoursMenu)}}
+                                        value={item < 10 ? `0${item}` : item} 
+                                        onClick={() => handleHoursMinutesSelect("hours", item)}
                                     >
+                                        {/* prepend with 0 for display purpose "00" if less than 10 */}
                                         { item < 10 ? `0${item}` : item }
                                     </span>
                                 ))}     
@@ -83,7 +125,8 @@ const TimePicker = () => {
                             <div className="timePickerHoursMinutesSelectValue">
                                 { minutesValue === undefined ?  "--"
                                 :
-                                    minutesValue < 10 ? `0${minutesValue}` : minutesValue 
+                                    // prepend with 0 for display purpose "00" if less than 10
+                                    minutesValue
                                 }
                             </div>
                             <div className="timePickerChevron"><img src={`${showMinutesMenu ? "../icons/chevron-up.svg" : "../icons/chevron-down.svg"}`} alt="" /></div>
@@ -96,15 +139,18 @@ const TimePicker = () => {
                                     <span 
                                         className="timePickerOptionMenuItem" 
                                         key={item} 
-                                        value={item} 
-                                        onClick={(()=> { setMinutesValue(item); setShowMinutesMenu(!showMinutesMenu)})}
+                                        value={item < 10 ? `0${item}` : item} 
+                                        onClick={() => handleHoursMinutesSelect("minutes", item)} 
                                     >
+                                        {/* prepend with 0 for display purpose "00" if less than 10 if less than 10 */}
                                         { item < 10 ? `0${item}` : item }
                                     </span>
                                 ))}
                             </div>                             
                         }   
                     </div>
+
+                    {timeValue && console.log("time is:", timeValue)}
 
                 </div>
             </div>            
@@ -123,10 +169,13 @@ const TimePicker = () => {
         };
     }, [showTimeMenu]);
 
+    // useEffect: listen for hourValue, minutesValue and update timeValue
     useEffect(() => {
-        console.log("hoursValue:", hoursValue)
-        console.log("minutesValue:", minutesValue)
-    },[hoursValue,minutesValue])
+        // if have values setTimeValue
+        if(hoursValue && minutesValue){
+            setTimeValue(`${hoursValue}:${minutesValue}`)
+        }
+    },[hoursValue, minutesValue]) // dependencies, if either changes updata timeValue
 
 
 
@@ -134,7 +183,12 @@ const TimePicker = () => {
         <div className={`timePickerSelectContainer ${showTimeMenu ? "timePickerisActiveSelectContainer" : "" } `}>           
             {/* select input field */}
             <div className="timePickerSelect" onClick={() => setShowTimeMenu(!showTimeMenu)}>
-                <span className="timePickerPlaceholderText">Select</span>
+                {
+                   timeValue === undefined ?
+                   <span className="timePickerPlaceholderText">Select</span>
+                    :
+                    <span>{timeValue}</span>
+                }
                 <img src="../icons/clock-icon.svg" alt="" />  
             </div>
 
