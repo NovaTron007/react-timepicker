@@ -94,7 +94,6 @@ const TimePicker = () => {
                             <div className="timePickerHoursMinutesSelectValue">
                                 { hoursValue === undefined ? "--" 
                                 : 
-                                    // prepend with 0 for display purpose "00" if less than 10
                                     hoursValue
                                 }
                             </div>
@@ -127,7 +126,6 @@ const TimePicker = () => {
                             <div className="timePickerHoursMinutesSelectValue">
                                 { minutesValue === undefined ?  "--"
                                 :
-                                    // prepend with 0 for display purpose "00" if less than 10
                                     minutesValue
                                 }
                             </div>
@@ -159,7 +157,7 @@ const TimePicker = () => {
         )
     }
 
-    // useEffect listen for outside click
+    // useEffect: listen for outside click
     useEffect(() => {
         if (showTimeMenu) {
           document.addEventListener('mousedown', handleClickOutside);
@@ -185,13 +183,13 @@ const TimePicker = () => {
         <div className={`timePickerSelectContainer ${showTimeMenu ? "timePickerisActiveSelectContainer" : "" } `}>           
             {/* select input field */}
             <div className="timePickerSelect" onClick={() => setShowTimeMenu(!showTimeMenu)}>
+                <img src="../icons/clock-icon.svg" alt="" />  
                 {
                    timeValue === undefined ?
                    <span className="timePickerPlaceholderText">Select</span>
                     :
                     <span>{timeValue}</span>
                 }
-                <img src="../icons/clock-icon.svg" alt="" />  
             </div>
 
             {/* show or hide TimePickerMenu Component */}

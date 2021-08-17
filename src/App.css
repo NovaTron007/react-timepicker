@@ -46,13 +46,18 @@
 .timePickerSelect {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   margin:0 20px;
   width: 100%;
+}
+.timePickerSelect > span {
+  font-size: 16px;
+  margin-left: 24px;
 }
 .timePickerPlaceholderText {
   font-size: 16px;
   color: #9a9a9a;
+  margin-left: 24px;
 }
 .timePickerLabel {
   font-size: 13px;
